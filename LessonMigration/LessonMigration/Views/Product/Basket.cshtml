@@ -1,0 +1,72 @@
+﻿@model List<BasketDetailVM>
+@{
+    ViewData["Title"] = "Basket";
+    int count = 1;
+    decimal totalPrice = 0;
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="header d-flex justify-content-between mt-3">
+            <h3>Basket</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Count
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                <img src="~/img/@product.Image" height="150" alt="product_image" />
+                            </td>
+                            <td>
+                                @product.Name
+                            </td>
+                            <td>
+                                @product.Count
+                            </td>
+                            <td>
+                                @product.Price ₼
+                            </td>
+                        </tr>
+                        count++;
+                        totalPrice += product.Price;
+                    }
+
+                <div class="my-3">
+                    <span>Total price: @totalPrice ₼</span>
+                </div>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
